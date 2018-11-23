@@ -13,12 +13,14 @@
 
   <xsl:template match='body'>
     <!-- Process each of the top level outlines. -->
-    <xsl:for-each select='outline'>
+    <!-- For now, we handle only the first top level outline -->
+    <!-- <xsl:for-each select='outline'> -->
+    <xsl:for-each select='outline[position()&lt;=1]'>
       <xsl:call-template name="top-outline"/>
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template name="top-outline">
+  <xsl:template name='top-outline'>
     <node>
       <xsl:attribute name='TEXT'>
         <xsl:value-of select='@text' />
